@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text=${title}></title>
+</head>
+<body>
+	<center>
+		<h3> * BIENVENIDO A RETIRO AZTECA * </h3>
+		<br/>
+		<form method="POST" th:action="@{/login/}" th:object="${identifyUser}">
+			<p>
+				<strong>INGRESA TU NOMBRE COMPLETO</strong><br/>
+				<input th:field="*{username}" type="text" required placeholder="Ejemplo: Edwin Apolo Galicia Venegas "  />
+			</p>
+			<P>
+				<strong>INGRESA TU NUMERO DE TARJETA</strong><br/>
+				<input th:field="*{numbertarget}" th:value=${numbercard} type="text" required placeholder="Ejemplo: 4658 4659 3002 6436"  />
+			</P>
+			<p>
+				<input type="submit" value="Entrar" />
+			</p>
+		</form>
+	</center>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text=${title}></title>
+</head>
+<body>
+	<center>
+		<h4 th:text="'Señor: ' + ${identifyUser.username} + ' con la tarjeta ' + ${identifyUser.numbertarget}"></h4>
+		<br/>
+		<p th:if="${status == 'successfull'}"> Su retiro de $ <strong th:text=${identifyUser.amount}> MXN</strong> fue exitoso
+			<br>
+			<strong>Recibiras los siguientes valores:</strong>
+			<br/>
+			<table border="1" >
+				<tr>
+					<th>Cantidad</th>
+					<th>Denominacion</th>
+					<th>Tipo de moneda</th>
+				</tr>
+				<tr th:each="ret: ${retiro}">
+					<td th:text="${ret.cantidad}"></td>
+					<td th:text="${ret.denominacion}"></td>
+					<td th:text="${ret.tipoDinero.name}"></td>
+				</tr>
+			</table >
+		<p>
+		<p th:if="${status == 'insuficient'}"> Su retiro de $ <strong th:text=${identifyUser.amount}> MXN</strong> fue rechazado por falta de saldo<p>
+		<p th:if="${status == 'incorrectmount'}"> Su retiro de $ <strong th:text=${identifyUser.amount}> MXN</strong> No es posible<p>
+	</center>
+</body>
+</html>

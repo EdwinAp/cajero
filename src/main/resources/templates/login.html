@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text=${title}></title>
+</head>
+<body>
+	<center>
+		<h3> * BIENVENIDO A RETIRO AZTECA SENOR <strong th:text=${identifyUser.username}></strong> * </h3>
+		<h4 th:text="'Cuanto desea retirar de su tarjeta: ' + ${identifyUser.numbertarget}"></h4>
+		<br/><br/>
+		<p>
+			<form method="POST" th:action="@{/retiro/}" th:object="${identifyUser}">
+				<p>
+					<strong>INGRESA TU NOMBRE COMPLETO</strong><br/>
+					<input th:field="*{username}" type="text" readonly required placeholder="Ejemplo: Edwin Apolo Galicia Venegas "  />
+				</p>
+				<P>
+					<strong>INGRESA TU NUMERO DE TARJETA</strong><br/>
+					<input th:field="*{numbertarget}" th:value=${numbercard} type="text" readonly required placeholder="Ejemplo: 4658 4659 3002 6436"  />
+				</P>
+				<p>
+					<strong>INGRESA EL MONTO QUE DESEAS RETIRAR</strong><br/>
+					$ <input th:field="*{amount}" type="number" step="0.5" required placeholder="Ejemplo: 1200 "  />
+				</p>
+				<p>
+					<input type="submit" value="Retirar" />
+				</p>
+			</form>
+		</p>
+	</center>
+</body>
+</html>
